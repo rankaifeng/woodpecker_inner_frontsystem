@@ -1,20 +1,20 @@
 import React from 'react'
 import ChangeMenus from '../components/ChangeMenus';
 const menuArray = [
-    "资产管理",
-    "租赁费用",
-    "运维项目",
-    "设备类型",
-    "设备分组",
-    "故障类型"];
+    "建设单位",
+    "管理单位",
+    "维护单位",
+    "施工单位",
+    "传输单位",
+    "电力单位"];
 const menuTypeArray = [
-    "device",
-    "rentalcost",
-    "projectcase",
-    "devicetype",
-    "devicegroup",
-    "failuretype"];
-class Configuration extends React.Component {
+    "construction",
+    "management",
+    "maintainer",
+    "ower",
+    "transfer",
+    "powerplant"];
+class Unit extends React.Component {
     state = {
         menus: []
     }
@@ -33,9 +33,9 @@ class Configuration extends React.Component {
         const { menus } = this.state;
         return (
             <ChangeMenus
-                defaultType="device"
+                defaultType="construction"
                 menus={menus} />
         )
     }
 }
-export default Configuration;
+export default Unit;

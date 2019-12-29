@@ -13,57 +13,10 @@ export const menus = [
 	},
 	{
 		path: '/configuration',
-		title: '基础配置',
-		children: [
-			{
-				path: '/configuration/device',
-				title: '资产管理'
-			},
-			{
-				path: '/configuration/rentalcost',
-				title: '租赁费用'
-			},
-			{
-				path: '/configuration/projectcase',
-				title: '运维项目'
-			},
-			{
-				path: '/configuration/devicetype',
-				title: '设备类型'
-			},
-			{
-				path: '/configuration/devicegroup',
-				title: '设备分组'
-			},
-			{
-				path: '/configuration/failuretype',
-				title: '故障类型'
-			}
-		]
-	}, {
+		title: '基础配置'
+	},
+	{
 		path: '/unit',
-		title: '单位',
-		children: [
-			{
-				path: '/configuration/user',
-				title: '管理单位'
-			},
-			{
-				path: '/configuration/admin',
-				title: '维护单位'
-			},
-			{
-				path: '/configuration/book',
-				title: '施工单位'
-			},
-			{
-				path: '/configuration/book',
-				title: '传输单位'
-			},
-			{
-				path: '/configuration/book',
-				title: '电力单位'
-			}
-		]
+		title: '单位'
 	}
 ];
