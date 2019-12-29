@@ -1,0 +1,59 @@
+
+
+.Layout-content-4 {
+    background-color:#f0f2f5 !important;
+    padding: 35px 0 0 10px !important;
+}
+.ant-layout-aside .ant-layout-container {
+    margin: 28px 10px;
+
+}
+
+
+.Logout-menuItem-26{ color: #fff!important;}
+
+
+
+
+
+
+
+
+
+/*!*.MuiPaper-root-32 {  background-color:transparent !important;}*!*/
+/*!*.MuiPaper-elevation1-35{box-shadow:none!important;}*!*/
+
+/*.MuiToolbar-root-60 { width:98%!important;background-color:#fff !important;margin: 1% 1% 0 1%!important;*/
+
+
+/*}*/
+/*.SearchInput-input-71 {*/
+    /*margin-top: 19px!important;*/
+/*}*/
+/*.MuiFormControl-marginNormal-77{margin-bottom:13px!important;}*/
+/*.MuiInputLabel-formControl-81{box-shadow:none!important;  border: none!important;}*/
+
+
+
+
+/*.MuiInput-formControl-93{margin-top:10px!important; width: 100px; float: left;}*/
+
+/*.MuiInput-root-92{ width:190px;height:32px;float:left; font-size:14px; line-height:32px;border:solid 1px #d4d4d4; text-indent:5px;border-radius:3px; }*/
+
+/*.MuiInputLabel-formControl-81 {*/
+
+    /*position:inherit!important;*/
+    /*transform:none!important;*/
+/*}*/
+/*.MuiInput-underline-96:before{*/
+
+    /*left: 0;*/
+    /*right: 0;*/
+    /*bottom: 0;*/
+    /*content: "\00a0";*/
+    /*position: inherit!important;*/
+    /*transition: none!important;*/
+    /*border-bottom: none!important;*/
+    /*pointer-events: none!important;*/
+
+/*}*/
