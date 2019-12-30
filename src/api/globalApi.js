@@ -6,22 +6,24 @@ import * as mHttpUtils from '../utils/HttpUtils'
 export function userLogin(params, callBack) {
     params.source = "admin";
     mHttpUtils.post("authenticate", params)
-        .then((result) => {            
+        .then((result) => {
             localStorage.setItem('token', result.data.auth_token);
             callBack(result);
         })
 }
 /**
- * 获取设备信息 用于展示地图
+ * 资产管理
  * @param {*} callBack 
  */
-export function mapPositions(id, callBack) {
-    let data = {
-        pagination: { page: 0, perPage: 10 },
-        filter: { devicetype_id_eq: id },
-        data: {},
-    }
-    requestGet("devices", callBack, data);
+export function devices(url, data, callBack) {
+    // let data = {
+    //     pagination: { page: 1, perPage: 10 },
+    //     // filter: !id ? { devicetype_id_eq: id } : {},
+    //     data: {},
+    // }
+    console.log(data);
+    
+    requestGet(url, data, callBack);
 }
 /**
  * 获取设备类型
@@ -98,7 +100,7 @@ export function rDevicegroups(callBack, params) {
  * @param {*} url 
  * @param {*} callBack 
  */
-function requestGet(url, callBack, params) {
+function requestGet(url, params, callBack) {
     mHttpUtils.get(url, params).then((result => {
         callBack(result);
     }))

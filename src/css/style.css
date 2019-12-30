@@ -4,7 +4,7 @@
 }
 
 svg {
-    color: white;
+    color: rgb(158, 153, 153);
 }
 
 body {
@@ -134,9 +134,14 @@ a {
 
 .ant-breadcrumb span span a {
     font-size: 14px;
-
-
 }
+
+.meun_item :hover {
+    background-color: #0a6ad1;
+    height: 100%;
+    padding: 0 8px;
+}
+
 
 .ant-layout-content {
     padding: 0 !important;
@@ -153,7 +158,9 @@ a {
     align-items: center;
     justify-content: space-between;
 }
-
+.action img{
+    padding: 0 5px;
+}
 h1, h2, h3, h4, h5, h6, button, input, textarea, select {
     font-size: 100%;
 }

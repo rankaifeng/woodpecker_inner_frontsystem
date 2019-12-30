@@ -25,6 +25,7 @@ class Configuration extends React.Component {
             mMenu.push({
                 name: item,
                 type: menuTypeArray[index],
+                // unitArray: index === menuArray.length - 1 ? unitArray : [],
                 isSelect: index === 0 ? true : false
             })
         })
