@@ -126,15 +126,16 @@ a {
 .breadCrumb {
     width: 100%;
     height: 25px;
-    background-color: rgb(100, 117, 112);
+    background-color: #e6f4f1;
     padding-left: 10px;
     display: flex;
     align-items: center;
 }
 
 .ant-breadcrumb span span a {
-    font-size: 12px;
-    color: rgb(214, 209, 209) !important;
+    font-size: 14px;
+
+
 }
 
 .ant-layout-content {
@@ -202,8 +203,9 @@ a {
     color: #666;
 }
 
-select, dl {
+select, dl, ul {
     word-wrap: normal;
+    margin-bottom: 0 !important;
 }
 
 input, button, img, div, a {

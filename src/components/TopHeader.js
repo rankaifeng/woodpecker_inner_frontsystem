@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom'
 import { NavLink } from 'react-router-dom';
 import { menus } from '../router/menus';
-import { Popover, Icon, Avatar, Dropdown, Menu, Badge } from 'antd';
+import { Icon, Avatar, Dropdown, Menu } from 'antd';
 
 const TopHeader = (props) => {
 	function handleLogout() {

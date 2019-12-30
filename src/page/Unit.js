@@ -33,6 +33,8 @@ class Unit extends React.Component {
         const { menus } = this.state;
         return (
             <ChangeMenus
+                {...this.props}
+                defaultName="建设单位"
                 defaultType="construction"
                 menus={menus} />
         )

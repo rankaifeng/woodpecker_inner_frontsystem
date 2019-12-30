@@ -1,5 +1,6 @@
 import React from 'react'
 import ChangeMenus from '../components/ChangeMenus';
+import { withRouter } from 'react-router-dom'
 const menuArray = [
     "资产管理",
     "租赁费用",
@@ -32,10 +33,15 @@ class Configuration extends React.Component {
     render() {
         const { menus } = this.state;
         return (
-            <ChangeMenus
-                defaultType="device"
-                menus={menus} />
+            <div>
+                <ChangeMenus
+                    {...this.props}
+                    defaultType="device"
+                    defaultName="资产管理"
+                    menus={menus} />
+            </div>
+
         )
     }
 }
-export default Configuration;
+export default withRouter(Configuration);

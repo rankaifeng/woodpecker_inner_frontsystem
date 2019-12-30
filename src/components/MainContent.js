@@ -3,6 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { routes } from '../router/routes';
 import { Layout } from 'antd';
+import Two from '../page/Two';
 const { Content } = Layout;
 
 const MainContent = () => {
@@ -16,7 +17,8 @@ const MainContent = () => {
 								key={ele.path}
 								path={ele.path} />
 						)}
-						{/* <Redirect from="/" exact to="/home" /> */}
+						<Redirect from="/" exact to="/home" />
+						<Route exact path="/two" component={Two} />
 						<Redirect to="/error/404" />
 					</Switch>
 				</Content>

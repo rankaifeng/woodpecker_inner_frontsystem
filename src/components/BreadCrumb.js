@@ -4,6 +4,14 @@ import { Breadcrumb, Icon } from 'antd';
 import { menus } from '../router/menus';
 
 class BreadCrumb extends React.Component {
+
+
+	state = {
+		name: ''
+	}
+	componentWillReceiveProps(nextProps) {
+		this.setState({ name: nextProps.name })
+	}
 	createBreadCrumbData = (location, data) => {
 		let arrA = [];
 		let arrB = [];
@@ -54,9 +62,15 @@ class BreadCrumb extends React.Component {
 			const last = routes.indexOf(route) === routes.length - 1;
 			return last ?
 				<Link to={route.path}>
-					{route.title}
+					<span style={{
+						color: "#000000",
+						marginRight: '5px'
+					}}>位置:</span>{route.title} > {this.state.name}
 				</Link> :
-				<span>{route.title}</span>;
+				<span><span style={{
+					color: "#000000",
+					marginRight: '5px'
+				}}>位置:</span>{route.title} > {this.state.name}</span>;
 		};
 		return (
 			<div className="breadCrumb">

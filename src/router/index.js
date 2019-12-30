@@ -4,7 +4,6 @@ import { Layout } from 'antd';
 import Login from '../page/Login';
 import TopHeader from '../components/TopHeader';
 import MainContent from '../components/MainContent';
-import BreadCrumb from '../components/BreadCrumb';
 import AuthRouter from '../components/AuthRouter';//为了验证是否登录逻辑组件
 const Router = () => {
     return (
@@ -22,7 +21,6 @@ const Mlayout = () => {
             <Layout style={{ minHeight: '100vh' }}>
                 <Layout>
                     <TopHeader />
-                    {/* <BreadCrumb /> */}
                     <MainContent />
                 </Layout>
             </Layout>
