@@ -79,7 +79,10 @@ class SearchBar extends React.Component {
 								</Button>
                             </FormItem>
                             <FormItem>
-                                <Button className={'btn'} onClick={this.handleReset}>
+                                <Button
+                                    style={{marginLeft:"10px"}}
+                                    type="danger" 
+                                    className={'btn'} onClick={this.handleReset}>
                                     重置
 								</Button>
                             </FormItem>

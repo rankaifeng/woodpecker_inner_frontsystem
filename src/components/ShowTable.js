@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from 'antd';
 const ShowTable = (props) => {
-    const { columns, dataSource, loading } = props;
+    const { columns, dataSource, loading} = props;
     return (
         <Table
             bordered

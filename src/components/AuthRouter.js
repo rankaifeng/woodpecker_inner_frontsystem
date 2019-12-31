@@ -1,15 +1,15 @@
 import React from 'react';
 import { withRouter } from 'react-router';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 const AuthRouter = ({ component: Component, ...rest }) => {
-    // const isLogged = localStorage.getItem('isLogin') === '1' ? true : false;
+    const isLogged = localStorage.getItem('isLogin');
     return <Route
         {...rest}
         render={
-            props => (//isLogged ?
-                <Component {...props} />
-                // <Redirect to={'/login'} />
+            props => (isLogged ?
+                <Component {...props} /> :
+                <Redirect to={'/login'} />
             )
         }
     />;

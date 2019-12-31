@@ -42,6 +42,7 @@ const http = ({ url = '', method, param = {} } = {}) => {
                     }
                 } else {
                     message.error("获取数据失败！");
+                    localStorage.setItem("isLogin", false);
                 }
             }
         })

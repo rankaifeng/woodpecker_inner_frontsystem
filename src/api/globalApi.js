@@ -8,6 +8,7 @@ export function userLogin(params, callBack) {
     mHttpUtils.post("authenticate", params)
         .then((result) => {
             localStorage.setItem('token', result.data.auth_token);
+            localStorage.setItem("isLogin", true);
             callBack(result);
         })
 }

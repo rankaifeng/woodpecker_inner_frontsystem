@@ -1,13 +1,14 @@
 import React from 'react'
-import { Pagination, Modal, notification, Popconfirm } from 'antd';
+import { Pagination, Modal, notification, Popconfirm, Button } from 'antd';
 import EditForm from './EditForm';
 import * as mHttpUtils from "../utils/HttpUtils";
+import SearchBar from '../components/search';
 import ShowTable from './ShowTable';
 import showImg from '../img/show.png';
 import editImg from '../img/edit.png';
 import delImg from '../img/del.png';
+import DeviceActions from './DeviceActions';
 class DataTable extends React.Component {
-
     state = {
         pageSize: 10,
         page: 1,
@@ -16,7 +17,7 @@ class DataTable extends React.Component {
         loading: false,
         columns: [],
         currentRow: null,
-        visible: false
+        visible: false,
     }
     confirm = row => {
         mHttpUtils.del(this.props.url + `/${row.id}`)
@@ -27,6 +28,12 @@ class DataTable extends React.Component {
                 });
                 this.fetch();
             })
+    }
+    handleSearch = value => {
+        this.fetch(value);
+    }
+    resetFields = (value) => {
+        this.fetch(value);
     }
     componentDidMount() {
         const { columns, url } = this.props;
@@ -88,8 +95,7 @@ class DataTable extends React.Component {
     };
 
     // 提交
-    handleSubmit = (id, e) => {
-        // e.preventDefault();
+    handleSubmit = id => {
         this.formRef.props.form.validateFields((err, values) => {
             if (!err) {
                 mHttpUtils.put(this.props.url + `/${id}`, values)
@@ -105,20 +111,31 @@ class DataTable extends React.Component {
         });
     };
     render() {
-        const { pageSize, page, total, data, loading, columns } = this.state;
-
+        const { pageSize, page, total, data, loading, columns, selectedRowKeys } = this.state;
+        const rowSelection = {
+            selectedRowKeys,
+            onChange: this.onSelectChange,
+        };
         return (
             <div>
+                <SearchBar
+                    resetFields={this.resetFields}
+                    handleSearch={this.handleSearch} />
+                <div className="create">
+                    <Button type="primary"
+                        icon="plus">新建</Button>
+                </div>
                 <ShowTable
+                    rowSelection={rowSelection}
                     loading={loading}
                     dataSource={data}
                     columns={columns} />
                 <Pagination
+                    style={{ position: 'absolute', bottom: '20px', right: '10px' }}
                     pageSize={pageSize}
                     current={page}
                     onChange={this.pageChange}
                     total={total} />
-
                 <Modal
                     title="编辑信息"
                     visible={this.state.visible}

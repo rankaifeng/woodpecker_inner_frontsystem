@@ -19,7 +19,7 @@ const Mlayout = () => {
     return (
         <div className="layout">
             <Layout style={{ minHeight: '100vh' }}>
-                <Layout>
+                <Layout className="div_cont">
                     <TopHeader />
                     <MainContent />
                 </Layout>

@@ -323,4 +323,4 @@ class EditForm extends Component {
 		);
 	}
 }
-export default Form.create()(EditForm, SelectValue);
+export default Form.create()(EditForm);

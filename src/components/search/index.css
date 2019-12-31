@@ -1,11 +1,13 @@
 .search_content {
     width: 100%;
-    background-color: #f0f8fe;
+    /* background-color: #f0f8fe; */
+    padding: 0 10px;
     color: rgb(95, 93, 93);
-    margin-top: 10px;
 }
 
-
+.search_content form {
+    margin-top: 20px;
+}
 
 .ant-advanced-search-form .ant-form-item {
     display: flex;
