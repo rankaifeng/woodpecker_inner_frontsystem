@@ -19,7 +19,7 @@ class Failuretype extends React.Component {
                 title: '图片',
                 render: (record) => {
                     let mPicture = record.picture;
-                    return <img style={{ width: '40px', height: '40px' }} src={mPicture} />;
+                    return <img alt="" style={{ width: '40px', height: '40px' }} src={mPicture} />;
                 }
             }
         ]

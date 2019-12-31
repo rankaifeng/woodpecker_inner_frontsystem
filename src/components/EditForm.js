@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Form, Input, Button, Select } from "antd";
+import { Form, Input, Button } from "antd";
 import SelectValue from './SelectValue';
-import * as mHttpUtils from "../utils/HttpUtils";
 class EditForm extends Component {
 	state = {
 		project: "",

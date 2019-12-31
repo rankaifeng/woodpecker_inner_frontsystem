@@ -1,7 +1,6 @@
 import React from 'react';
 import MenuCount from './MenuCount';
 import BreadCrumb from '../components/BreadCrumb';
-import { Popover, Button } from 'antd';
 class ChangeMenus extends React.Component {
     state = {
         type: "",
@@ -16,7 +15,6 @@ class ChangeMenus extends React.Component {
         for (let menuItem of menus) {
             if (menuItem.type === type) {
                 menuItem.isSelect = true;
-                type = type;
             } else {
                 menuItem.isSelect = false;
             }
@@ -35,17 +33,6 @@ class ChangeMenus extends React.Component {
         });
     }
     render() {
-        const content = dataArray => {
-            return <div>
-                {dataArray.map((item => {
-                    return (
-                        <p onClick={() => this.menuItem(item)}>{item.name}</p>
-                    )
-                }))}
-            </div>
-        }
-
-
         const { menus } = this.props;
         const { name, type } = this.state;
         return (
@@ -53,13 +40,6 @@ class ChangeMenus extends React.Component {
                 <ul
                     className="title_bg">
                     {menus.map((item, index) => {
-                        // if (index === menus.length - 1) {
-                        //     return (<div>
-                        //         <Popover content={content(item.unitArray)} title="Title" trigger="hover">
-                        //             <li className={this.state.isShow ? "title_bg_select" : ''}>{item.name}</li>
-                        //         </Popover>
-                        //     </div>)
-                        // }
                         return <li
                             onClick={() => this.isSelect(item.type, item.name)}
                             className={item.isSelect ? "title_bg_select" : ""}

@@ -50,8 +50,6 @@ const http = ({ url = '', method, param = {} } = {}) => {
 
 // get方法
 export function get(url, params = {}) {
-    console.log(params);
-
     if (params == null) {
         url = `${BASE_URL}/${url}`;
         return http({

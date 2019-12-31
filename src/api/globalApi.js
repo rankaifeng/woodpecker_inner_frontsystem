@@ -16,13 +16,6 @@ export function userLogin(params, callBack) {
  * @param {*} callBack 
  */
 export function devices(url, data, callBack) {
-    // let data = {
-    //     pagination: { page: 1, perPage: 10 },
-    //     // filter: !id ? { devicetype_id_eq: id } : {},
-    //     data: {},
-    // }
-    console.log(data);
-    
     requestGet(url, data, callBack);
 }
 /**

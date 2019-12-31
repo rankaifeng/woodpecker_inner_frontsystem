@@ -1,5 +1,4 @@
 import React from 'react'
-import TopHeader from '../components/TopHeader';
 class Home extends React.Component {
 
     componentDidMount(){

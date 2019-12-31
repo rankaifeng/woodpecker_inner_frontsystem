@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import { Breadcrumb, Icon } from 'antd';
+import { Breadcrumb } from 'antd';
 import { menus } from '../router/menus';
 
 class BreadCrumb extends React.Component {

@@ -1,13 +1,11 @@
 import React from 'react'
-import { Pagination, Button, Modal, notification, Popconfirm, message } from 'antd';
+import { Pagination, Modal, notification, Popconfirm } from 'antd';
 import EditForm from './EditForm';
 import * as mHttpUtils from "../utils/HttpUtils";
 import ShowTable from './ShowTable';
-import * as globalApi from '../api/globalApi';
 import showImg from '../img/show.png';
 import editImg from '../img/edit.png';
 import delImg from '../img/del.png';
-const { confirm } = Modal;
 class DataTable extends React.Component {
 
     state = {
@@ -37,15 +35,15 @@ class DataTable extends React.Component {
                 title: '操作',
                 render: (text, row, index) => {
                     return <div className="action">
-                        <img src={showImg} />
-                        <img src={editImg} onClick={() => this.handleEdit(row)} />
+                        <img alt="" src={showImg} />
+                        <img alt="" src={editImg} onClick={() => this.handleEdit(row)} />
                         <Popconfirm
                             title="确认删除?"
                             onConfirm={() => this.confirm(row)}
                             okText="是"
                             cancelText="否"
                         >
-                            <img src={delImg} />
+                            <img alt="" src={delImg} />
                         </Popconfirm>
 
                     </div>
@@ -80,7 +78,7 @@ class DataTable extends React.Component {
             data: {},
         }
         this.setState({ loading: true });
-        globalApi.devices(url, data, (result) => {
+        mHttpUtils.get(url, data).then(result => {
             this.setState({
                 loading: false,
                 data: result.data.rows,
