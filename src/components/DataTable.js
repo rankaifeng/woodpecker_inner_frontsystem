@@ -1,6 +1,7 @@
 import React from 'react'
-import { Pagination, Button, Modal } from 'antd';
+import { Pagination, Button, Modal, notification, Popconfirm, message } from 'antd';
 import EditForm from './EditForm';
+import * as mHttpUtils from "../utils/HttpUtils";
 import ShowTable from './ShowTable';
 import * as globalApi from '../api/globalApi';
 import showImg from '../img/show.png';
@@ -19,18 +20,34 @@ class DataTable extends React.Component {
         currentRow: null,
         visible: false
     }
-
+    confirm = row => {
+        mHttpUtils.del(this.props.url + `/${row.id}`)
+            .then(result => {
+                notification["success"]({
+                    message: '操作提示',
+                    description: result.data.message,
+                });
+                this.fetch();
+            })
+    }
     componentDidMount() {
         const { columns, url } = this.props;
         if (url === 'devices') {
             let item = {
                 title: '操作',
                 render: (text, row, index) => {
-                    console.log(row);
                     return <div className="action">
                         <img src={showImg} />
                         <img src={editImg} onClick={() => this.handleEdit(row)} />
-                        <img src={delImg} />
+                        <Popconfirm
+                            title="确认删除?"
+                            onConfirm={() => this.confirm(row)}
+                            okText="是"
+                            cancelText="否"
+                        >
+                            <img src={delImg} />
+                        </Popconfirm>
+
                     </div>
                 },
             }
@@ -59,7 +76,7 @@ class DataTable extends React.Component {
         const { url } = this.props;
         let data = {
             pagination: { page: page, perPage: pageSize },
-            // filter: searchData,
+            filter: params,
             data: {},
         }
         this.setState({ loading: true });
@@ -71,34 +88,21 @@ class DataTable extends React.Component {
             })
         })
     };
+
     // 提交
-    handleSubmit = e => {
-        e.preventDefault();
-        let _this = this;
+    handleSubmit = (id, e) => {
+        // e.preventDefault();
         this.formRef.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
-                // this.setState({ visible: false });
-                // // 此处应该为后台业务逻辑
-                // setTimeout(() => {
-                //     Modal.info({
-                //         title: '点击了提交',
-                //         content: (
-                //             <div>
-                //                 <p>当前表单内容为：</p>
-                //                 <p>{JSON.stringify(values)}</p>
-                //             </div>
-                //         ),
-                //         onOk() {
-                //             // 操作完跳转到第一页
-                //             const pager = { ..._this.state.pagination };
-                //             pager.current = 1;
-                //             _this.setState({ pagination: pager });
-                //             _this.fetch(1, _this.state.pagination.pageSize);
-                //             // console.log(_this.state.selectedRowKeys)
-                //         }
-                //     });
-                // }, 500);
+                mHttpUtils.put(this.props.url + `/${id}`, values)
+                    .then(result => {
+                        notification["success"]({
+                            message: '操作提示',
+                            description: result.data.message,
+                        });
+                        this.setState({ visible: false });
+                        this.fetch();
+                    })
             }
         });
     };
@@ -107,12 +111,6 @@ class DataTable extends React.Component {
 
         return (
             <div>
-                <Button type="primary" icon="plus">
-                    新建</Button>
-                <Button type="primary" icon="plus">
-                    分组</Button>
-                <Button type="primary" icon="user">
-                    用户</Button>
                 <ShowTable
                     loading={loading}
                     dataSource={data}

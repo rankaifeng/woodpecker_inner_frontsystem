@@ -3,7 +3,7 @@ import { stringify } from 'query-string';
 import { message } from "antd";
 let apiToken = "";
 const HEADER_CHART = 'application/json; charset=utf-8';
-export const BASE_URL = 'http://111.9.123.177:8088/';
+export const BASE_URL = 'http://192.168.100.115:8088/';
 // export const BASE_URL = localStorage.getItem("httpUrl");
 export const MAP_URL = BASE_URL.replace("8088", "8687");//瓦片地址
 localStorage.setItem("wurl", MAP_URL + "map");
@@ -51,7 +51,7 @@ const http = ({ url = '', method, param = {} } = {}) => {
 // get方法
 export function get(url, params = {}) {
     console.log(params);
-    
+
     if (params == null) {
         url = `${BASE_URL}/${url}`;
         return http({
@@ -113,5 +113,11 @@ export function put(url, param = {}) {
         method: 'PUT',
         param
 
+    })
+}
+export function del(url) {
+    return http({
+        url,
+        method: 'DELETE',
     })
 }

@@ -3,8 +3,12 @@
     padding: 0px;
 }
 
-svg {
+/* svg {
     color: rgb(158, 153, 153);
+} */
+
+.action img {
+    cursor: pointer;
 }
 
 body {
@@ -95,9 +99,9 @@ a {
     font-size: 14px;
 }
 
-.ant-popover-inner-content {
+/* .ant-popover-inner-content {
     padding: 0 !important;
-}
+} */
 
 .top_menu ul {
     height: 50px;
@@ -142,7 +146,6 @@ a {
     padding: 0 8px;
 }
 
-
 .ant-layout-content {
     padding: 0 !important;
 }
@@ -158,9 +161,11 @@ a {
     align-items: center;
     justify-content: space-between;
 }
-.action img{
+
+.action img {
     padding: 0 5px;
 }
+
 h1, h2, h3, h4, h5, h6, button, input, textarea, select {
     font-size: 100%;
 }

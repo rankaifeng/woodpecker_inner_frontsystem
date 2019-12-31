@@ -1,13 +1,9 @@
 import React from 'react';
-import { Form, Tag } from 'antd';
+import { Form, Tag, Button } from 'antd';
 import DataTable from '../components/DataTable';
+import SearchBar from '../components/search';
 class Device extends React.Component {
     state = {
-        pageSize: 10,
-        page: 1,
-        total: 0,
-        data: [],
-        loading: false,
         columns: [
             {
                 title: '设备名',
@@ -47,11 +43,32 @@ class Device extends React.Component {
             }
         ]
     }
+    handleSearch = value => {
+        console.log(value);
+
+        this.showTable.fetch(value);
+    }
+    resetFields = (value) => {
+        this.showTable.fetch(value);
+    }
     render() {
-        const { columns } = this.state;
+        const { columns, searchArray } = this.state;
         return (
             <div>
+                <SearchBar
+                    resetFields={this.resetFields}
+                    handleSearch={this.handleSearch}
+                    searchArray={searchArray} />
+                <Button type="primary" icon="plus">
+                    新建</Button>
+                <Button type="primary" icon="plus">
+                    分组</Button>
+                <Button type="primary" icon="user">
+                    用户</Button>
                 <DataTable
+                    ref={(showTable) => {
+                        this.showTable = showTable;
+                    }}
                     columns={columns}
                     url="devices"
                     {...this.props} />
