@@ -12,8 +12,10 @@ class EditForm extends Component {
 	componentWillReceiveProps(nextProps) {
 		!nextProps.visible && this.props.form.resetFields();
 	}
-	handleSubmit = data => {
-		this.props.handleSubmit(data);
+	handleSubmit = dataType => {
+		this.props.form.validateFields((err, values) => {
+			this.props.handleSubmit(dataType,values);
+		})
 		this.project.resetFields();
 	}
 	render() {

@@ -5,7 +5,6 @@ import SelectValue from "../components/SelectValue";
 import editImg from "../img/edit.png";
 import delImg from "../img/del.png";
 import * as mHttpUtils from "../utils/HttpUtils";
-
 import OrdinaryEdit from "../components/ordinary/OrdinaryEdit";
 const FormItem = Form.Item;
 class Projectcase extends React.Component {
@@ -38,32 +37,8 @@ class Projectcase extends React.Component {
       {
         title: "质保结束时间",
         dataIndex: "endtime"
-      },
-      {
-        title: "操作",
-        render: (text, row, index) => {
-          return (
-            <div className="action">
-              <img
-                alt=""
-                src={editImg}
-                onClick={() => this.handleEdit({ ...row })}
-              />
-              <Popconfirm
-                title="确认删除?"
-                onConfirm={() => this.confirm(row)}
-                okText="是"
-                cancelText="否"
-              >
-                <img alt="" src={delImg} />
-              </Popconfirm>
-            </div>
-          );
-        }
       }
-    ],
-    currentRow: [],
-    visible: false
+    ]
   };
   handleSearch = e => {
     e.preventDefault();
@@ -81,39 +56,12 @@ class Projectcase extends React.Component {
   onChange = id => {
     this.setState({ id: id });
   };
-  handleEdit = rows => {
-    this.setState({ currentRow: rows, visible: true });
-  };
-  handleOk = () => {
-    this.setState({ visible: false });
-  };
-  handleCancel = () => {
-    this.setState({ visible: false });
-  };
-  confirm = row => {
-    mHttpUtils.del("projectcases" + `/${row.id}`).then(result => {
-      this.showNotification(result);
-    });
-  };
-  handleSubmit = (dataType, values) => {
-    if (JSON.stringify(dataType) == "{}") {
-      mHttpUtils.post(this.props.url, values).then(result => {
-        this.showNotification(result);
-      });
-      return;
-    }
-    mHttpUtils.put("projectcases" + `/${dataType.id}`, values).then(result => {
-      this.showNotification(result);
-    });
-  };
-  showNotification = result => {
-    notification["success"]({
-      message: "操作提示",
-      description: result.data.message
-    });
-    this.setState({ visible: false });
-    this.showTable.fetch();
-  };
+
+
+
+
+
+
   render() {
     const { columns } = this.state;
     const { getFieldDecorator } = this.props.form;
@@ -177,19 +125,6 @@ class Projectcase extends React.Component {
             </Col>
           </Row>
         </Form>
-        <Modal
-          title="编辑信息"
-          visible={this.state.visible}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
-          footer={null}
-        >
-          <OrdinaryEdit
-            handleSubmit={this.handleSubmit}
-            visible={this.state.visible}
-            data={this.state.currentRow}
-          />
-        </Modal>
         <DataTable
           ref={showTable => {
             this.showTable = showTable;
