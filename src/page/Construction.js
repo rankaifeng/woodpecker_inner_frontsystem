@@ -1,14 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-
-class Construction extends React.Component {
-
-    
-
-    render() {
-        return (
-            <div><NavLink to='/two'>建设单位</NavLink></div>
-        )
-    }
+import UnitWrapped from '../components/UnitWrapped';
+const Construction = () => {
+    return (
+        <UnitWrapped url="constructions" />
+    )
 }
-export default Construction;
+export default (Construction);

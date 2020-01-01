@@ -1,13 +1,9 @@
-
-
 import React from 'react';
-
-
-class Management extends React.Component {
-    render() {
-        return (
-            <div>管理单位</div>
-        )
-    }
+import UnitWrapped from '../components/UnitWrapped';
+const Management = () => {
+    return (
+        <UnitWrapped
+            url="managements" />
+    )
 }
-export default Management;
+export default (Management);

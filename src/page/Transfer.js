@@ -1,12 +1,9 @@
-
 import React from 'react';
-
-
-class Transfer extends React.Component {
-    render() {
-        return (
-            <div>传输单位</div>
-        )
-    }
+import UnitWrapped from '../components/UnitWrapped';
+const Transfer = () => {
+    return (
+        <UnitWrapped
+            url="transfers" />
+    )
 }
-export default Transfer;
+export default (Transfer);

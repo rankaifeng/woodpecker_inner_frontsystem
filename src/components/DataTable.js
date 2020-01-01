@@ -99,37 +99,26 @@ class DataTable extends React.Component {
         this.formRef.props.form.validateFields((err, values) => {
             if (!err) {
                 if (JSON.stringify(dataType) == "{}") {
-                    const { page, pageSize } = this.state;
-                    let data = {
-                        pagination: { page: page, perPage: pageSize },
-                        filter: {},
-                        data: values,
-                    }
-                    mHttpUtils.get(this.props.url, data).then(result => {
-                        notification["success"]({
-                            message: '操作提示',
-                            description: result.data.message,
-                        });
-                        this.props.form.resetFields();
-                        console.log(this.props);
-
-                        this.setState({ visible: false });
-                        this.fetch();
+                    mHttpUtils.post(this.props.url, values).then(result => {
+                        this.showNotification(result);
                     })
                     return;
                 }
                 mHttpUtils.put(this.props.url + `/${dataType.id}`, values)
                     .then(result => {
-                        notification["success"]({
-                            message: '操作提示',
-                            description: result.data.message,
-                        });
-                        this.setState({ visible: false });
-                        this.fetch();
+                        this.showNotification(result);
                     })
             }
         });
     };
+    showNotification = result => {
+        notification["success"]({
+            message: '操作提示',
+            description: result.data.message,
+        });
+        this.setState({ visible: false });
+        this.fetch();
+    }
     render() {
         const { pageSize, page, total, data, loading, columns, selectedRowKeys } = this.state;
         const rowSelection = {
@@ -138,14 +127,15 @@ class DataTable extends React.Component {
         };
         return (
             <div>
-                <SearchBar
-                    resetFields={this.resetFields}
-                    handleSearch={this.handleSearch} />
-                <div className="create">
-                    <Button type="primary"
-                        onClick={() => this.handleEdit({})}
-                        icon="plus">新建</Button>
-                </div>
+                {this.props.type === 'unit' ? null :
+                    <div className="create">
+                        <SearchBar
+                            resetFields={this.resetFields}
+                            handleSearch={this.handleSearch} />
+                        <Button type="primary"
+                            onClick={() => this.handleEdit({})}
+                            icon="plus">新建</Button>
+                    </div>}
                 <ShowTable
                     rowSelection={rowSelection}
                     loading={loading}

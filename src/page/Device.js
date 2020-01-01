@@ -47,9 +47,6 @@ class Device extends React.Component {
         return (
             <div>
                 <DataTable
-                    ref={(showTable) => {
-                        this.showTable = showTable;
-                    }}
                     columns={columns}
                     url="devices"
                     {...this.props} />

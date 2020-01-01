@@ -1,13 +1,10 @@
-
-
 import React from 'react';
-
-
-class Maintainer extends React.Component {
-    render() {
-        return (
-            <div>维护单位</div>
-        )
-    }
+import UnitWrapped from '../components/UnitWrapped';
+const Maintainer = () => {
+    return (
+        <UnitWrapped
+            url="maintainers"
+        />
+    )
 }
-export default Maintainer;
+export default (Maintainer);

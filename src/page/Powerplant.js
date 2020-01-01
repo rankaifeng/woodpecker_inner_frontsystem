@@ -1,13 +1,9 @@
-
-
 import React from 'react';
-
-
-class Powerplant extends React.Component {
-    render() {
-        return (
-            <div>电力单位</div>
-        )
-    }
+import UnitWrapped from '../components/UnitWrapped';
+const Powerplant = () => {
+    return (
+        <UnitWrapped
+            url="powerplants" />
+    )
 }
-export default Powerplant;
+export default (Powerplant);

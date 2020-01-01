@@ -1,12 +1,9 @@
-
 import React from 'react';
-
-
-class Ower extends React.Component {
-    render() {
-        return (
-            <div>施工单位</div>
-        )
-    }
+import UnitWrapped from '../components/UnitWrapped';
+const Ower = () => {
+    return (
+        <UnitWrapped
+            url="owers" />
+    )
 }
-export default Ower;
+export default (Ower);
