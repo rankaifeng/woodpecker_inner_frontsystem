@@ -8,6 +8,8 @@ class SelectValue extends React.Component {
     };
     componentDidMount() {
         const { url } = this.props;
+
+
         let data = {
             pagination: { page: 0, perPage: 20 },
             data: null
@@ -22,12 +24,15 @@ class SelectValue extends React.Component {
     resetFields = () => {
         this.setState({ id: '' })
     }
+
     onChange = value => {
         this.props.onChange(value);
         this.setState({ id: value });
     };
     render() {
         const { selectArray } = this.state;
+        console.log(this.state.id);
+        
         return (
             <Select
                 onChange={this.onChange}

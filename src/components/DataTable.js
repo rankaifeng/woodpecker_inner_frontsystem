@@ -95,10 +95,30 @@ class DataTable extends React.Component {
     };
 
     // 提交
-    handleSubmit = id => {
+    handleSubmit = dataType => {
         this.formRef.props.form.validateFields((err, values) => {
             if (!err) {
-                mHttpUtils.put(this.props.url + `/${id}`, values)
+                if (JSON.stringify(dataType) == "{}") {
+                    const { page, pageSize } = this.state;
+                    let data = {
+                        pagination: { page: page, perPage: pageSize },
+                        filter: {},
+                        data: values,
+                    }
+                    mHttpUtils.get(this.props.url, data).then(result => {
+                        notification["success"]({
+                            message: '操作提示',
+                            description: result.data.message,
+                        });
+                        this.props.form.resetFields();
+                        console.log(this.props);
+
+                        this.setState({ visible: false });
+                        this.fetch();
+                    })
+                    return;
+                }
+                mHttpUtils.put(this.props.url + `/${dataType.id}`, values)
                     .then(result => {
                         notification["success"]({
                             message: '操作提示',
@@ -123,6 +143,7 @@ class DataTable extends React.Component {
                     handleSearch={this.handleSearch} />
                 <div className="create">
                     <Button type="primary"
+                        onClick={() => this.handleEdit({})}
                         icon="plus">新建</Button>
                 </div>
                 <ShowTable

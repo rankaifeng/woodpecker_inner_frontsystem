@@ -29,7 +29,7 @@ class Device extends React.Component {
                 render: (record) => {
                     let etc = record.devicestate_etc;
                     if (etc !== null && etc !== "") {
-                        return <Tag color="green">
+                        return <Tag color="red">
                             {
                                 etc.map((item, index) => (
                                     <span key={index}>{item.name}</span>

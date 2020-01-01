@@ -107,6 +107,18 @@ a {
     margin: 15px;
 }
 
+.shallow_gray {
+    background-color: #f0f8fe;
+}
+
+.ant-table-thead>tr>th {
+    background: #f0f8fe !important;
+}
+
+.ant-table-tbody>tr:hover:not(.ant-table-expanded-row)>td {
+    background-color: transparent!important;
+}
+
 .div_cont {
     border-radius: 5px;
     height: 800px;

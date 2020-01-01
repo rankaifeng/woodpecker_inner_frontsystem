@@ -12,7 +12,10 @@ class EditForm extends Component {
 	componentWillReceiveProps(nextProps) {
 		!nextProps.visible && this.props.form.resetFields();
 	}
-
+	handleSubmit = data => {
+		this.props.handleSubmit(data);
+		this.project.resetFields();
+	}
 	render() {
 		const { getFieldDecorator } = this.props.form;
 		const { data } = this.props;
@@ -64,6 +67,9 @@ class EditForm extends Component {
 						]
 					})(
 						<SelectValue
+							ref={(project) => {
+								this.project = project;
+							}}
 							url="projectcases"
 							onChange={this.onChange}
 							typeId={data.projectcase_id} />
@@ -315,7 +321,8 @@ class EditForm extends Component {
 					})(<Input />)}
 				</Form.Item>
 				<Form.Item {...formTailLayout}>
-					<Button type="primary" onClick={() => this.props.handleSubmit(data.id)}>
+					<Button type="primary"
+						onClick={() => this.handleSubmit(data)}>
 						提交
           			</Button>
 				</Form.Item>

@@ -9,10 +9,7 @@ const AuthRouter = ({ component: Component, ...rest }) => {
         render={
             props => (isLogged ?
                 <Component {...props} /> :
-                <Redirect to={'/login'} />
-            )
-        }
-    />;
+                <Redirect to={'/login'} />)} />;
 };
 
 export default withRouter(AuthRouter);
