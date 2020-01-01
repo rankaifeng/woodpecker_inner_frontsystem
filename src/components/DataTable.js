@@ -7,7 +7,6 @@ import ShowTable from './ShowTable';
 import showImg from '../img/show.png';
 import editImg from '../img/edit.png';
 import delImg from '../img/del.png';
-import DeviceActions from './DeviceActions';
 class DataTable extends React.Component {
     state = {
         pageSize: 10,
@@ -79,13 +78,18 @@ class DataTable extends React.Component {
     fetch = (params = {}) => {
         const { page, pageSize } = this.state;
         const { url } = this.props;
+        console.log(url);
+        
         let data = {
             pagination: { page: page, perPage: pageSize },
             filter: params,
             data: {},
         }
         this.setState({ loading: true });
+          console.log(data);
         mHttpUtils.get(url, data).then(result => {
+            console.log(result);
+            
             this.setState({
                 loading: false,
                 data: result.data.rows,
@@ -127,15 +131,15 @@ class DataTable extends React.Component {
         };
         return (
             <div>
-                {this.props.type === 'unit' ? null :
-                    <div className="create">
-                        <SearchBar
-                            resetFields={this.resetFields}
-                            handleSearch={this.handleSearch} />
-                        <Button type="primary"
-                            onClick={() => this.handleEdit({})}
-                            icon="plus">新建</Button>
-                    </div>}
+                {this.props.url === 'devices' ? <div className="create">
+                    <SearchBar
+                        resetFields={this.resetFields}
+                        handleSearch={this.handleSearch} />
+                    <Button type="primary"
+                        onClick={() => this.handleEdit({})}
+                        icon="plus">新建</Button>
+                </div> : null
+                }
                 <ShowTable
                     rowSelection={rowSelection}
                     loading={loading}
