@@ -31,7 +31,6 @@ class SelectValue extends React.Component {
     };
     render() {
         const { selectArray } = this.state;
-        console.log(this.state.id);
         
         return (
             <Select

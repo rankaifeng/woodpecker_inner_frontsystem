@@ -36,12 +36,13 @@ class DataTable extends React.Component {
     }
     componentDidMount() {
         const { columns, url } = this.props;
-        if (url === 'devices') {
+        if (url != 'leasemanagements') {
             let item = {
                 title: '操作',
                 render: (text, row, index) => {
                     return <div className="action">
-                        <img alt="" src={showImg} />
+                        <img alt="" src={showImg} 
+                        style={url==='devices'?{display:''}:{display:'none'}}/>
                         <img alt="" src={editImg} onClick={() => this.handleEdit(row)} />
                         <Popconfirm
                             title="确认删除?"
