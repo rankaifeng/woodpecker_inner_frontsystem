@@ -282,12 +282,6 @@ input, button, img, div, a {
     border: solid 1px #f0f0f0;
 }
 
-#sidebar {
-    width: 96%;
-    margin: 0 0 0 2.1%;
-    margin-bottom: 0 !important;
-    background: #fff;
-}
 
 .BMap_cpyCtrl {
     display: none;

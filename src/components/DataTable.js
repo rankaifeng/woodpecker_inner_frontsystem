@@ -41,8 +41,8 @@ class DataTable extends React.Component {
     this.fetch(value);
   };
   componentDidMount() {
-    const { columns, url } = this.props;
-    if (url != "leasemanagements") {
+    const { columns, url, type } = this.props;
+    if (url != "leasemanagements" && type != 'unit') {
       let item = {
         title: "操作",
         render: (text, row, index) => {
@@ -137,7 +137,7 @@ class DataTable extends React.Component {
       currentRow,
       visible
     } = this.state;
-    const { url } = this.props;
+    const { url, type } = this.props;
     let pro = {
       handleSubmit: this.handleSubmit,
       data: currentRow,
@@ -152,6 +152,7 @@ class DataTable extends React.Component {
               resetFields={this.resetFields}
               handleSearch={this.handleSearch} /> : null}
             <Button
+              style={type === 'unit' ? { display: 'none' } : { display: 'block' }}
               type="primary"
               onClick={() => this.handleEdit({})}
               icon="plus">

@@ -5,7 +5,7 @@ let apiToken = "";
 const HEADER_CHART = 'application/json; charset=utf-8';
 export const BASE_URL = 'http://192.168.100.115:8088/';
 // export const BASE_URL = localStorage.getItem("httpUrl");
-export const MAP_URL = BASE_URL.replace("8088", "8687");//瓦片地址
+export const MAP_URL = BASE_URL.replace("8088", "8686");//瓦片地址
 localStorage.setItem("wurl", MAP_URL + "map");
 const http = ({ url = '', method, param = {} } = {}) => {
     apiToken = localStorage.getItem("token", "");

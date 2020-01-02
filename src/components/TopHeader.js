@@ -15,11 +15,11 @@ const TopHeader = (props) => {
 				<Icon type="logout" />
 				退出登录
 				</Menu.Item>
-			<Menu.Item key="logout" onClick={handleLogout}>
+			<Menu.Item key="user" onClick={handleLogout}>
 				<Icon type="user" />
 				用户信息
 				</Menu.Item>
-			<Menu.Item key="logout" onClick={handleLogout}>
+			<Menu.Item key="pwd" onClick={handleLogout}>
 				<Icon type="password" />
 				修改密码
 				</Menu.Item>
