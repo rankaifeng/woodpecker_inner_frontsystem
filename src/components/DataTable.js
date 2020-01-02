@@ -140,11 +140,17 @@ class DataTable extends React.Component {
       visible
     } = this.state;
     const { url } = this.props;
+    let pro = {
+      handleSubmit: this.handleSubmit,
+      data: currentRow,
+      visible: visible
+    };
     return (
       <div>
         {url != "leasemanagements" ? (
           <div className="create">
             {url === 'devices' ? <SearchBar
+              type="device"
               resetFields={this.resetFields}
               handleSearch={this.handleSearch} /> : null}
             <Button
@@ -172,25 +178,17 @@ class DataTable extends React.Component {
         >
           {{
             devices: <EditForm
-              data={currentRow}
-              visible={visible}
+              {...pro}
               wrappedComponentRef={form => (this.formRef = form)}
-              handleSubmit={this.handleSubmit}
             />,
             projectcases: <ProjectsEdit
-              data={currentRow}
-              visible={visible}
-              handleSubmit={this.handleSubmit}
+              {...pro}
             />,
             devicetypes: <DeviceTypeEdit
-              data={currentRow}
-              visible={visible}
-              handleSubmit={this.handleSubmit}
+              {...pro}
             />, failuretypes: <DeviceTypeEdit
               type="failure"
-              data={currentRow}
-              visible={visible}
-              handleSubmit={this.handleSubmit}
+              {...pro}
             />
           }[url]}
         </Modal>

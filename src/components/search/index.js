@@ -25,20 +25,21 @@ class SearchBar extends React.Component {
     };
     render() {
         const { getFieldDecorator } = this.props.form;
+        const { type } = this.props;
         return (
             <div className="search_content">
                 <Form className="ant-advanced-search-form" style={{ paddingBottom: 0 }}>
                     <Row gutter={24}>
-                        <Col span={3} style={{ display: 'block' }}>
+                        <Col span={3} style={type === 'device' ? { display: 'block' } : { display: 'none' }}>
                             <FormItem label="设备名">
                                 {getFieldDecorator('name_cont')(
                                     <Input placeholder="请输入设备名" />
                                 )}
                             </FormItem>
                         </Col>
-                        <Col span={3}>
+                        <Col span={3} style={type === 'failure' ? { display: 'none' } : { display: 'block' }}>
                             <Form.Item label="项目名称">
-                                {getFieldDecorator("projectcase_id_eq")
+                                {getFieldDecorator(type === 'device' ? "projectcase_id_eq" : 'id_eq')
                                     (<SelectValue
                                         ref={(resetProject) => {
                                             this.resetProject = resetProject;
@@ -48,7 +49,7 @@ class SearchBar extends React.Component {
                                         typeId="projectcase_id" />)}
                             </Form.Item>
                         </Col>
-                        <Col span={3}>
+                        <Col span={3} style={type === 'device' ? { display: 'block' } : { display: 'none' }}>
                             <Form.Item label="分组">
                                 {getFieldDecorator("devicegroups_id")
                                     (<SelectValue
@@ -59,7 +60,7 @@ class SearchBar extends React.Component {
                                         typeId="devicegroups_id" />)}
                             </Form.Item>
                         </Col>
-                        <Col span={3} style={{ display: 'block' }}>
+                        <Col span={3} style={type === 'device' ? { display: 'block' } : { display: 'none' }}>
                             <FormItem label="设备故障">
                                 {getFieldDecorator('devicestate_id_null')(
                                     <Select
@@ -69,6 +70,21 @@ class SearchBar extends React.Component {
                                     </Select>
                                 )}
                             </FormItem>
+                        </Col>
+
+                        <Col span={3} style={type === 'failure' ? { display: 'block' } : { display: 'none' }}>
+                            <Form.Item label="名称">
+                                {getFieldDecorator("name_cont")(
+                                    <Input />
+                                )}
+                            </Form.Item>
+                        </Col>
+                        <Col span={3} style={type === 'failure' ? { display: 'block' } : { display: 'none' }}>
+                            <Form.Item label="故障编码">
+                                {getFieldDecorator("typecode_cont")(
+                                    <Input />
+                                )}
+                            </Form.Item>
                         </Col>
                         <Col span={2} style={{ marginRight: '10px', display: 'flex' }} className="serarch-btns">
                             <FormItem>
