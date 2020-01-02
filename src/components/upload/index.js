@@ -79,6 +79,8 @@ class ManualUpload extends PureComponent {
             multiple: multiple,
             showUploadList: showUploadList,
         }
+        console.log(this.state.fileList.length);
+
         return (
             <div>
                 <Upload

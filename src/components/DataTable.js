@@ -91,8 +91,6 @@ class DataTable extends React.Component {
   fetch = (params = {}) => {
     const { page, pageSize } = this.state;
     const { url } = this.props;
-    console.log(url);
-
     let data = {
       pagination: { page: page, perPage: pageSize },
       filter: params,
@@ -175,6 +173,7 @@ class DataTable extends React.Component {
           onOk={this.handleOk}
           onCancel={this.handleCancel}
           footer={null}
+          destroyOnClose
         >
           {{
             devices: <EditForm
