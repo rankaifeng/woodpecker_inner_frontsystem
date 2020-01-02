@@ -8,6 +8,7 @@ import showImg from "../img/show.png";
 import editImg from "../img/edit.png";
 import delImg from "../img/del.png";
 import ProjectsEdit from "./projects/ProjectsEdit";
+import DeviceTypeEdit from "./device-type/DeviceTypeEdit";
 class DataTable extends React.Component {
   state = {
     pageSize: 10,
@@ -29,7 +30,12 @@ class DataTable extends React.Component {
     });
   };
   handleSearch = value => {
-    this.fetch(value);
+    const newValues = {
+      ...value,
+      devicestate_id_null: value.devicestate_id_null === "1"
+        ? true : false
+    }
+    this.fetch(newValues);
   };
   resetFields = value => {
     this.fetch(value);
@@ -93,10 +99,7 @@ class DataTable extends React.Component {
       data: {}
     };
     this.setState({ loading: true });
-    console.log(data);
     mHttpUtils.get(url, data).then(result => {
-      console.log(result);
-
       this.setState({
         loading: false,
         data: result.data.rows,
@@ -175,6 +178,16 @@ class DataTable extends React.Component {
               handleSubmit={this.handleSubmit}
             />,
             projectcases: <ProjectsEdit
+              data={currentRow}
+              visible={visible}
+              handleSubmit={this.handleSubmit}
+            />,
+            devicetypes: <DeviceTypeEdit
+              data={currentRow}
+              visible={visible}
+              handleSubmit={this.handleSubmit}
+            />, failuretypes: <DeviceTypeEdit
+              type="failure"
               data={currentRow}
               visible={visible}
               handleSubmit={this.handleSubmit}

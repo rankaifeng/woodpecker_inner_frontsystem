@@ -9,11 +9,9 @@ class SearchBar extends React.Component {
     handleSearch = e => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
-
-            values.devicestate_id_null =
-                values.devicestate_id_null === "1"
-                    ? true : false;
-            this.props.handleSearch(values);
+            if (!err) {
+                this.props.handleSearch(values);
+            }
         });
     };
     onChange = id => {
@@ -80,8 +78,8 @@ class SearchBar extends React.Component {
                             </FormItem>
                             <FormItem>
                                 <Button
-                                    style={{marginLeft:"10px"}}
-                                    type="danger" 
+                                    style={{ marginLeft: "10px" }}
+                                    type="danger"
                                     className={'btn'} onClick={this.handleReset}>
                                     重置
 								</Button>
