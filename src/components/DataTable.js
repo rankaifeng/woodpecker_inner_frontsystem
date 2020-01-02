@@ -133,44 +133,21 @@ class DataTable extends React.Component {
       data,
       loading,
       columns,
-      selectedRowKeys
+      currentRow,
+      visible
     } = this.state;
     const { url } = this.props;
-    let editModel;
-
-    if (url === "devices") {
-      editModel = (
-        <EditForm
-          data={this.state.currentRow}
-          visible={this.state.visible}
-          wrappedComponentRef={form => (this.formRef = form)}
-          handleSubmit={this.handleSubmit}
-        />
-      );
-    } else if (url === "projectcases") {
-      editModel = (
-        <ProjectsEdit
-          data={this.state.currentRow}
-          visible={this.state.visible}
-          wrappedComponentRef={form => (this.formRef = form)}
-          handleSubmit={this.handleSubmit}
-        />
-      );
-    }
-
     return (
       <div>
-        {this.props.url === "devices" ? (
+        {url != "leasemanagements" ? (
           <div className="create">
-            <SearchBar
+            {url === 'devices' ? <SearchBar
               resetFields={this.resetFields}
-              handleSearch={this.handleSearch}
-            />
+              handleSearch={this.handleSearch} /> : null}
             <Button
               type="primary"
               onClick={() => this.handleEdit({})}
-              icon="plus"
-            >
+              icon="plus">
               新建
             </Button>
           </div>
@@ -190,7 +167,19 @@ class DataTable extends React.Component {
           onCancel={this.handleCancel}
           footer={null}
         >
-         {editModel}
+          {{
+            devices: <EditForm
+              data={currentRow}
+              visible={visible}
+              wrappedComponentRef={form => (this.formRef = form)}
+              handleSubmit={this.handleSubmit}
+            />,
+            projectcases: <ProjectsEdit
+              data={currentRow}
+              visible={visible}
+              handleSubmit={this.handleSubmit}
+            />
+          }[url]}
         </Modal>
       </div>
     );

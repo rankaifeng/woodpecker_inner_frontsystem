@@ -3,7 +3,7 @@ import { stringify } from 'query-string';
 import { message } from "antd";
 let apiToken = "";
 const HEADER_CHART = 'application/json; charset=utf-8';
-export const BASE_URL = 'http://111.9.123.177:8088/';
+export const BASE_URL = 'http://192.168.100.115:8088/';
 // export const BASE_URL = localStorage.getItem("httpUrl");
 export const MAP_URL = BASE_URL.replace("8088", "8687");//瓦片地址
 localStorage.setItem("wurl", MAP_URL + "map");

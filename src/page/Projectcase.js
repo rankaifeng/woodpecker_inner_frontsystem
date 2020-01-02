@@ -1,11 +1,7 @@
 import React from "react";
 import DataTable from "../components/DataTable";
-import { Popconfirm, Button, Form, notification, Row, Col, Modal } from "antd";
+import {Button, Form, Row, Col } from "antd";
 import SelectValue from "../components/SelectValue";
-import editImg from "../img/edit.png";
-import delImg from "../img/del.png";
-import * as mHttpUtils from "../utils/HttpUtils";
-import OrdinaryEdit from "../components/ordinary/OrdinaryEdit";
 const FormItem = Form.Item;
 class Projectcase extends React.Component {
   state = {
@@ -56,26 +52,11 @@ class Projectcase extends React.Component {
   onChange = id => {
     this.setState({ id: id });
   };
-
-
-
-
-
-
   render() {
     const { columns } = this.state;
     const { getFieldDecorator } = this.props.form;
     return (
       <div className="search_content">
-        <div className="create">
-          <Button
-            type="primary"
-            onClick={() => this.handleEdit({})}
-            icon="plus"
-          >
-            新建
-          </Button>
-        </div>
         <Form className="ant-advanced-search-form" style={{ paddingBottom: 0 }}>
           <Row gutter={24}>
             <Col span={3}>
